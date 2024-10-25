@@ -21,8 +21,24 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.17.0'
+
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.register('runTask') {
+    doLast {
+        println 'Running the printing task'
+    }
+}
+
+tasks.register('hello') {
+    dependsOn 'runTask'
+    doLast {
+        println 'Hello world!'
+    }
 }

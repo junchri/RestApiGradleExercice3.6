@@ -1,5 +1,7 @@
 package be.abis.exercise.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Course {
     private int courseId;
     private String shortTitle;
@@ -53,5 +55,9 @@ public class Course {
 
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
+    }
+
+    public String toString() {
+        return  StringUtils.lowerCase(getLongTitle());
     }
 }
