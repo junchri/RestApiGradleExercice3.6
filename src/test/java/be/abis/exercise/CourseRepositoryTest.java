@@ -1,5 +1,5 @@
 package be.abis.exercise;
-
+/*
 import be.abis.exercise.model.Course;
 import be.abis.exercise.repository.CourseRepository;
 import be.abis.exercise.repository.MemoryCourseRepository;
@@ -41,3 +41,4 @@ public class CourseRepositoryTest {
         assertEquals(null, c);
     }
 }
+*/

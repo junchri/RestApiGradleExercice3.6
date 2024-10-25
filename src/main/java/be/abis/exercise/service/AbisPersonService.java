@@ -1,40 +1,48 @@
 package be.abis.exercise.service;
 
-import be.abis.exercise.model.Course;
 import be.abis.exercise.model.Person;
 import be.abis.exercise.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
 public class AbisPersonService implements PersonService {
-    @Autowired
-    private PersonRepository pr;
+    private PersonRepository personRepository;
 
-
-
-    public List<Person> findAllPersons() {
-        return pr.findAllPersons();
+    //@Autowired
+    public AbisPersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
-    public Person findPersonById(int ind) {
-        return pr.findPersonById(ind);
+    @Override
+    public List<Person> getAllPersons() {
+        return personRepository.getAllPersons();
     }
 
-    public List<Person> findPersonByName(String name) {
-        return pr.findPersonByName(name);
+    @Override
+    public Person findPerson(int id) {
+        return personRepository.findPerson(id);
     }
 
-    public void addPerson(Person p){
-
+    @Override
+    public Person findPerson(String emailAddress, String passWord) {
+        return personRepository.findPerson(emailAddress, passWord);
     }
-    public void updatePerson(Person p) {
 
+    @Override
+    public void addPerson(Person p) throws IOException {
+        personRepository.addPerson(p);
     }
+
+    @Override
     public void deletePerson(int id) {
-
+        personRepository.deletePerson(id);
     }
 
+    @Override
+    public void changePassword(Person p, String newPswd) throws IOException {
+        personRepository.changePassword(p,newPswd);
+    }
 }
